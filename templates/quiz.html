@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="shortcut icon" href="static/favicon.png">
+
+    <title>test quiz</title>
+</head>
+<body>
+    <div id="language_from_flask" class="hide">
+        {{language_from_flask}}
+       </div>
+    <script>
+        const language = document.getElementById("language_from_flask").textContent.toLowerCase().trim();
+        if (language == 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        }
+    </script>
+    <div class="container-md">
+        <div id="quiz_container" class="hide">
+            <div class="quiz_no flex-row">
+                <h1 id="quiz_no"></h1>
+                <div class="progress">
+                    <div id="prog_bar" class="progress-bar" role="progressbar" style="width: null" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+            </div>
+            <div>
+                <p id="question_text" class="display-4"></p>
+            </div>
+            <div id="answer_text" class="form-control text-center">
+                <input type="text" placeholder="Enter your answer" id="answer_area" class="answer_area">
+                <input type="submit" value="Ansewr" id="submit_button" class="answer_area">
+            </div>
+        
+            <div id="result" class="row">
+                <p id="score" class="display-6 col-md text-center"></p>
+                <p id="correct_answers" class="display-6 col-md text-center"></p>
+                <p id="wrong_answers" class="display-6 col-md text-center"></p>
+            </div>
+        </div>
+        
+        <div id="start_game" class="start_screen align-content-center">
+            <h2 class="text-center start">Click Start to Start the Game!</h2>
+            <button id="start" class="col-12 btn btn-primary start">Start Game</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <div>
+        <form  method="post" id="post_form_flask_01" action="quiz">
+
+        </form>
+    </div>
+    <div>
+        <div id="quiz_set_from_flask" class="hide">
+            {{ quiz_set_from_flask | tojson }}
+           </div>
+        <div id="quiz_name_from_flask" class="hide">
+            {{ quiz_name_from_flask }}
+        </div>
+
+    </div>
+
+
+    <script src="static/app.js" defer></script>
+</body>
+</html>

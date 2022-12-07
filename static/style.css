@@ -1,0 +1,133 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    background-color: black;
+    filter: invert(1) hue-rotate(180deg);
+}
+
+
+.hide {
+    display: none;
+}
+
+
+.start_screen {
+    padding: 20%;
+    border: 1px solid black;
+}
+
+.start{
+    margin: 1rem;
+    font-size: 2rem !important;
+}
+
+
+
+#answer_area {
+    width: 60%;
+}
+
+#submit_button{
+    width: 30%;
+    color: rgb(58, 162, 10);
+    background-color: antiquewhite;
+}
+
+.answer_area{
+    font-size: 2rem;
+}
+
+
+.quiz_selection {
+    margin: 0.75rem;
+}
+
+.btn_quiz_selec {
+    font-size: 4rem;
+}
+
+#result{
+    padding: 1rem;
+}
+
+@media (max-width: 410px) {  
+    .btn_quiz_selec {font-size:2rem;} 
+    #question_text {font-size:1.5rem;}
+    #answer_area {font-size:1.5rem;}
+    #submit_button {font-size:1.5rem;}
+    #score {font-size:1rem;}
+    #wrong_answers {font-size:1rem;}
+    #correct_answers {font-size:1rem;}
+  }
+
+  @media (min-width: 411px) and (max-width: 800px){
+    .btn_quiz_selec {font-size:2.5rem;} 
+    #question_text {font-size:1.8rem;}
+    #answer_area {font-size:1.8rem;}
+    #submit_button {font-size:1.8rem;}
+    #score {font-size:1.2rem;}
+    #wrong_answers {font-size:1.2rem;}
+    #correct_answers {font-size:1.2rem;}
+  }
+
+  @media (min-width: 801px) and (max-width: 1300px){
+    .btn_quiz_selec {font-size:3rem;} 
+    #question_text {font-size:2.4rem;}
+    #answer_area {font-size:2.4rem;}
+    #submit_button {font-size:2.4rem;}
+    #score {font-size:1.5rem;}
+    #wrong_answers {font-size:1.5rem;}
+    #correct_answers {font-size:1.5rem;}
+  }
+
+
+  @media (min-width: 1301px){
+    .btn_quiz_selec {font-size:4rem;} 
+    #question_text {font-size:3rem;}
+    #answer_area {font-size:3rem;}
+    #submit_button {font-size:3rem;}
+    #score {font-size:2rem;}
+    #wrong_answers {font-size:2rem;}
+    #correct_answers {font-size:2rem;}
+  }
+  
+
+
+
+
+  #selection_buttons > form:nth-child(1) > button {
+    background-color: lightcoral;
+
+  }
+  #selection_buttons > form:nth-child(2) > button {
+    background-color: lightpink;
+  }
+  #selection_buttons > form:nth-child(3) > button {
+    background-color: lightskyblue;
+  }
+  #selection_buttons > form:nth-child(4) > button {
+    background-color: lightgreen;
+
+  }
+  #selection_buttons > form:nth-child(5) > button {
+    background-color: lightgoldenrodyellow;
+  }
+  #selection_buttons > form:nth-child(6) > button {
+    background-color: lightgoldenrodyellow;
+  }
+  #selection_buttons > form:nth-child(7) > button {
+    background-color: lightgoldenrodyellow;
+  }
+  #selection_buttons > form:nth-child(8) > button {
+    background-color: lightgoldenrodyellow;
+  }
+  #selection_buttons > form:nth-child(9) > button {
+    background-color: lightgoldenrodyellow;
+  }
+  #selection_buttons > form:nth-child(10) > button {
+    background-color: lightgoldenrodyellow;
+  }
