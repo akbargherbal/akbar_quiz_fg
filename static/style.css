@@ -131,3 +131,43 @@ body {
   #selection_buttons > form:nth-child(10) > button {
     background-color: lightgoldenrodyellow;
   }
+
+
+.animate_wrong {
+    text-align: center;
+    animation: word 1.5s ease 0s 1 normal forwards;
+    font-weight: 700;
+    color: red;
+}
+
+@keyframes word {
+	0%,
+	100% {
+		transform: rotate(0deg);
+		transform-origin: 50% 50%;
+	}
+
+	10% {
+		transform: rotate(8deg);
+	}
+
+	20%,
+	40%,
+	60% {
+		transform: rotate(-10deg);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: rotate(10deg);
+	}
+
+	80% {
+		transform: rotate(-8deg);
+	}
+
+	90% {
+		transform: rotate(8deg);
+	}
+}

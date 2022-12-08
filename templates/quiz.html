@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="static/style.css">
     <link rel="shortcut icon" href="static/favicon.png">
 
-    <title>test quiz</title>
+    <title>Quiz Page</title>
 </head>
 <body>
     <div id="language_from_flask" class="hide">
@@ -32,13 +32,15 @@
                   </div>
             </div>
             <div>
+                <p id="feedback" class="display-4"></p>
+            </div>
+            <div>
                 <p id="question_text" class="display-4"></p>
             </div>
             <div id="answer_text" class="form-control text-center">
                 <input type="text" placeholder="Enter your answer" id="answer_area" class="answer_area">
                 <input type="submit" value="Ansewr" id="submit_button" class="answer_area">
             </div>
-        
             <div id="result" class="row">
                 <p id="score" class="display-6 col-md text-center"></p>
                 <p id="correct_answers" class="display-6 col-md text-center"></p>

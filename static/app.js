@@ -21,7 +21,7 @@ const ui_quiz_no = document.getElementById('quiz_no')
 const ui_correct_answers = document.getElementById('correct_answers')
 const ui_wrong_answers = document.getElementById('wrong_answers')
 const ui_score = document.getElementById('score')
-
+const ui_feedback = document.getElementById('feedback')
 
 const ui_answer_text = document.getElementById('answer_area')
 const ui_submit_answer = document.getElementById('submit_button')
@@ -93,28 +93,39 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    ui_answer_text.classList.remove('answer_correct')
-    ui_answer_text.classList.remove('answer_incorrect')
     let answer = ui_answer_text.value
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
         console.log('Correct', `Indeed ${answer} is one of the choices in ${choices}`)
         correct_answers = correct_answers + 1;
     } else {console.log('WRONG;', `Answer ${answer} is not one of the choices in ${choices}`)
+            
             someArray.push(choices[0]) 
-            wrong_answers = wrong_answers + 1;}
+            wrong_answers = wrong_answers + 1;
+
+            ui_feedback.classList.add('animate_wrong')
+            ui_feedback.textContent = `${choices[0]}`
+
+        }
     score = Math.floor(100 * ((correct_answers)/(correct_answers + wrong_answers)));
 
     ui_correct_answers.textContent = `Correct Answers: ${correct_answers}`
     ui_wrong_answers.textContent = `Wrong Answers: ${wrong_answers}`
     ui_score.textContent = `Score: ${score}%`
     ui_answer_text.value = ''
+    
 
     progress = Math.floor(100 * ((correct_answers + wrong_answers) / quiz_length))
     ui_progress_bar.ariaValueNow = `${progress}`
     ui_progress_bar.ariaValueText = `${progress}%`
     ui_progress_bar.style.width = `${progress}%`
+    
 
+    ui_feedback.addEventListener('animationend', () => {
+        ui_feedback.classList.remove('animate_wrong')
+        ui_feedback.textContent = ''
+    })
+    
     makeQuiz()
 }
 
