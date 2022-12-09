@@ -94,7 +94,7 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    ui_quiz_no.scrollIntoView(true) // Scroll up to the top.
+    window.scrollTo(0, 0);
     let answer = ui_answer_text.value
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
@@ -122,12 +122,12 @@ function submitAnswer() {
     ui_progress_bar.ariaValueText = `${progress}%`
     ui_progress_bar.style.width = `${progress}%`
     
-
+    ui_quiz_no.scrollIntoView(true) // Scroll up to the top. Just in case!!!!
     ui_feedback.addEventListener('animationend', () => {
         ui_feedback.classList.remove('animate_wrong')
         ui_feedback.textContent = ''
     })
-    ui_quiz_no.scrollIntoView(true) // Scroll up to the top. Just in case!!!!
+    
     makeQuiz()
 }
 
