@@ -42,8 +42,8 @@ var progress = 0;
 console.log('Language:', `${language}`)
 if (language == 'ar') {
     ui_quiz_no.innerText = `السؤال ${quiz_number} من ${quiz_length}`;
-    ui_answer_text.placeholder = 'أدخل إجابتك هنا';
-    ui_submit_answer.value = 'الإجابة؟';
+    ui_answer_text.placeholder = 'الإجابة';
+    ui_submit_answer.value = 'تأكيد';
 }
 
 
@@ -80,7 +80,6 @@ function makeQuiz() {
     if (quiz_set.length > 0) {
         let currenQuiz = quiz_set.shift();
         quiz_number = quiz_number + 1;
-        ui_dummy.scrollIntoView(true) // Scroll up to the top.
         
         if (language == 'ar') {
             ui_quiz_no.textContent = `السؤال ${quiz_number} من ${quiz_length}`}
@@ -95,7 +94,7 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    ui_dummy.scrollIntoView(true)
+    ui_quiz_no.scrollIntoView(true)
     let answer = ui_answer_text.value
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
@@ -123,7 +122,6 @@ function submitAnswer() {
     ui_progress_bar.ariaValueText = `${progress}%`
     ui_progress_bar.style.width = `${progress}%`
     
-    ui_dummy.scrollIntoView(true) // Scroll up to the top. Just in case!!!!
     ui_feedback.addEventListener('animationend', () => {
         ui_feedback.classList.remove('animate_wrong')
         ui_feedback.textContent = ''
