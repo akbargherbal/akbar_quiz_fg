@@ -79,7 +79,8 @@ function makeQuiz() {
     if (quiz_set.length > 0) {
         let currenQuiz = quiz_set.shift();
         quiz_number = quiz_number + 1;
-
+        ui_quiz_no.scrollIntoView() // Scroll up to the top.
+        
         if (language == 'ar') {
             ui_quiz_no.textContent = `السؤال ${quiz_number} من ${quiz_length}`}
         else {
