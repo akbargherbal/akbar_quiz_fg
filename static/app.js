@@ -129,7 +129,7 @@ function submitAnswer() {
     setTimeout(() => {
         ui_quiz_no.scrollIntoView();
         makeQuiz()
-    }, 3000);
+    }, 2000);
     
 }
 
