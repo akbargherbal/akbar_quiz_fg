@@ -94,7 +94,7 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    ui_quiz_no.scrollIntoView(true)
+    window.scrollTo(0, 0);
     let answer = ui_answer_text.value
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
