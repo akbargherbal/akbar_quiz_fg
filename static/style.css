@@ -137,7 +137,7 @@ body {
     text-align: center;
     animation: word 2s ease 0s 1 normal forwards;
     font-weight: 700;
-    color: red;
+    color: rgb(9, 62, 47);
 }
 
 @keyframes word {
