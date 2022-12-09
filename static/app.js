@@ -27,7 +27,7 @@ const ui_answer_text = document.getElementById('answer_area')
 const ui_submit_answer = document.getElementById('submit_button')
 
 const ui_progress_bar = document.getElementById('prog_bar')
-const ui_dummy = document.getElementById('dummy')
+const ui_result = document.getElementById('result')
 
 var quiz_number = 0
 var choices;
@@ -94,7 +94,6 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    window.scrollTo(0, 0);
     let answer = ui_answer_text.value
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
@@ -121,13 +120,17 @@ function submitAnswer() {
     ui_progress_bar.ariaValueNow = `${progress}`
     ui_progress_bar.ariaValueText = `${progress}%`
     ui_progress_bar.style.width = `${progress}%`
-    
+    ui_result.scrollIntoView();
     ui_feedback.addEventListener('animationend', () => {
         ui_feedback.classList.remove('animate_wrong')
         ui_feedback.textContent = ''
     })
     
-    makeQuiz()
+    setTimeout(() => {
+        ui_quiz_no.scrollIntoView();
+        makeQuiz()
+    }, 3000);
+    
 }
 
 function makeForm (array_01, form_id) {
