@@ -27,6 +27,7 @@ const ui_answer_text = document.getElementById('answer_area')
 const ui_submit_answer = document.getElementById('submit_button')
 
 const ui_progress_bar = document.getElementById('prog_bar')
+const ui_dummy = document.getElementById('dummy')
 
 var quiz_number = 0
 var choices;
@@ -79,7 +80,7 @@ function makeQuiz() {
     if (quiz_set.length > 0) {
         let currenQuiz = quiz_set.shift();
         quiz_number = quiz_number + 1;
-        ui_quiz_no.scrollIntoView(true) // Scroll up to the top.
+        ui_dummy.scrollIntoView(true) // Scroll up to the top.
         
         if (language == 'ar') {
             ui_quiz_no.textContent = `السؤال ${quiz_number} من ${quiz_length}`}
@@ -94,7 +95,7 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    window.scrollTo(0, 0);
+    ui_dummy.scrollIntoView(true)
     let answer = ui_answer_text.value
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
@@ -122,7 +123,7 @@ function submitAnswer() {
     ui_progress_bar.ariaValueText = `${progress}%`
     ui_progress_bar.style.width = `${progress}%`
     
-    ui_quiz_no.scrollIntoView(true) // Scroll up to the top. Just in case!!!!
+    ui_dummy.scrollIntoView(true) // Scroll up to the top. Just in case!!!!
     ui_feedback.addEventListener('animationend', () => {
         ui_feedback.classList.remove('animate_wrong')
         ui_feedback.textContent = ''
