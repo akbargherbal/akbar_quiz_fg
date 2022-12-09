@@ -127,7 +127,7 @@ function submitAnswer() {
     })
     
     setTimeout(() => {
-        ui_quiz_no.scrollIntoView();
+        window.scrollTo(0, 0)
         makeQuiz()
     }, 2000);
     
