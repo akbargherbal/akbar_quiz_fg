@@ -79,7 +79,7 @@ function makeQuiz() {
     if (quiz_set.length > 0) {
         let currenQuiz = quiz_set.shift();
         quiz_number = quiz_number + 1;
-        ui_quiz_no.scrollIntoView() // Scroll up to the top.
+        ui_quiz_no.scrollIntoView(true) // Scroll up to the top.
         
         if (language == 'ar') {
             ui_quiz_no.textContent = `السؤال ${quiz_number} من ${quiz_length}`}
@@ -94,7 +94,7 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    ui_quiz_no.scrollIntoView() // Scroll up to the top.
+    ui_quiz_no.scrollIntoView(true) // Scroll up to the top.
     let answer = ui_answer_text.value
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
@@ -127,7 +127,7 @@ function submitAnswer() {
         ui_feedback.classList.remove('animate_wrong')
         ui_feedback.textContent = ''
     })
-    
+    ui_quiz_no.scrollIntoView(true) // Scroll up to the top. Just in case!!!!
     makeQuiz()
 }
 
