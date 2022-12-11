@@ -94,7 +94,7 @@ function makeQuiz() {
 }
 
 function submitAnswer() {
-    let answer = ui_answer_text.value
+    let answer = ui_answer_text.value.trim()
     console.log(`Answer in Text Area: ${answer}`)
     if (choices.includes(answer)) {
         console.log('Correct', `Indeed ${answer} is one of the choices in ${choices}`)
