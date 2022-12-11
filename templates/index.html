@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png">
+    <title>Akbar Quiz App</title>
+</head>
+<body class="flex-col">
+    <div id="main_view">
+        <div id="home" class="flex-col"></div>
+        <div id="quiz" class="flex-col" style="display: none;height:100%;">
+            <div id="progress">Question <span id="minAnswer"></span>/<span id="maxAnswer"></span></div>
+            <div id="question"></div>
+            <div id="user_input">
+                <input id="input" type="text" style="width:75%" />
+                <a class="button" onclick="Answer()" style="width: 25%;">Answer</a>
+            </div>
+            <div id="state">
+                Score: <span id="score"></span>%
+                Correct: <span id="correct"></span>
+                Wrong: <span id="wrong"></span>
+            </div>
+        </div>
+        <div id="history" style="display: none;">
+            <a class="button" onclick="ShowView('home')">Back</a>
+            <table id="table">
+            </table>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
