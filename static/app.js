@@ -37,7 +37,7 @@ var wrong_answers = 0;
 var score = 0;
 
 var progress = 0;
-
+var set_time_out;
 
 console.log('Language:', `${language}`)
 if (language == 'ar') {
@@ -99,6 +99,7 @@ function submitAnswer() {
     if (choices.includes(answer)) {
         console.log('Correct', `Indeed ${answer} is one of the choices in ${choices}`)
         correct_answers = correct_answers + 1;
+        set_time_out = 0;
     } else {console.log('WRONG;', `Answer ${answer} is not one of the choices in ${choices}`)
             
             someArray.push(choices[0]) 
@@ -106,6 +107,7 @@ function submitAnswer() {
 
             ui_feedback.classList.add('animate_wrong')
             ui_feedback.textContent = `${choices[0]}`
+            set_time_out = 2000;
 
         }
     score = Math.floor(100 * ((correct_answers)/(correct_answers + wrong_answers)));
@@ -129,7 +131,7 @@ function submitAnswer() {
     setTimeout(() => {
         window.scrollTo(0, 0)
         makeQuiz()
-    }, 2000);
+    }, set_time_out);
     
 }
 

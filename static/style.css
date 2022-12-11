@@ -98,7 +98,13 @@ body {
     #correct_answers {font-size:2rem;}
   }
   
-
+  .navbar{
+    background-color: rgb(2, 25, 4);
+    color: white;
+    padding: 0.5rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+  }
 
 
 
@@ -174,3 +180,4 @@ body {
 		transform: rotate(8deg);
 	}
 }
+
