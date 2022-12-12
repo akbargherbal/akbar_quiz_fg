@@ -80,13 +80,9 @@ def quiz():
 @app.route('/quizzes_history')
 @cross_origin()
 def quizzes_history():
-    if os.path.isfile(file_results):
-        pass
-    else:
-        ut.download_from_gcp_storage(bucket=bucket, blob_path=blob_path, file=file_results)
-        print('Downloaded from GCP Storage')
     try:
-        table_from_flask = ut.make_html_table('quizzes_result.json')
+        ut.download_from_gcp_storage(bucket=bucket, blob_path=blob_path, file=file_results)
+        table_from_flask = ut.make_html_table(file_results)
         return render_template('quizzes_history.html', table_from_flask=table_from_flask)
 
     except:
