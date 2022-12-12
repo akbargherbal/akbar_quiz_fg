@@ -3,12 +3,26 @@ import pandas as pd
 from zipfile import ZipFile
 import os
 from datetime import datetime
-from pathlib import Path
 import pickle
 import re
 
 def get_datetime_now():
     return datetime.now()
+
+from google.cloud import storage
+def download_from_gcp_storage(bucket, blob_path='folder/file.xxx', file='file.xxx'):
+    client = storage.Client()
+    bucket = client.get_bucket(bucket)
+    blob = bucket.blob(blob_path)
+    blob.download_to_filename(file)
+    client.close()
+
+def upload_to_gcp_storage(bucket, blob_path='folder/file.xxx', file='file.xxx'):
+    client = storage.Client()
+    bucket = client.get_bucket(bucket)
+    blob = bucket.blob(blob_path)
+    blob.upload_from_filename(file)
+    client.close()    
 
 def get_quiz_collection(zip_file_path, file_ext='csv'):
     zf = ZipFile(zip_file_path)
@@ -27,17 +41,20 @@ def append_dict_to_df(df_x, dict_x):
 
 def update_json_file_with_dict(path_to_json, dict_x, save_file=True):
     '''Update json file with dict, if the file does not exist, create a new one'''
-    js_file = Path(path_to_json)
-    if js_file.is_file() == False:
-        df_old = pd.DataFrame(data = {i:[] for i in dict_x.keys()})
-    else:
+    try:
         df_old = pd.read_json(path_to_json, encoding='utf-8')
+        
+    except:
+        with open(path_to_json, mode='w', encoding='utf-8') as f:
+            f.write('[]')
+        df_old = pd.DataFrame(data = {i:[] for i in dict_x.keys()})
         
     result = append_dict_to_df(df_old, dict_x).reset_index(drop=True)
     
     if save_file:
         result.to_json(path_to_json, orient='records', force_ascii = False)
     return result
+
 
 def clean_name_01(x):
     '''

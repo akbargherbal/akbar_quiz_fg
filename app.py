@@ -1,13 +1,20 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_cors import cross_origin
-# from flask_session import Session
-from time import sleep
 
 import utilities as ut
 import pandas as pd
 from zipfile import ZipFile
 import os
 
+bucket =  'akbar-quiz-app'
+blob_path = 'RESULTS/quizzes_result.json'
+file_results = 'quizzes_result.json'
+
+if os.path.isfile(file_results):
+    pass
+else:
+    ut.download_from_gcp_storage(bucket=bucket, blob_path=blob_path, file=file_results)
+    print('Downloaded from GCP Storage')
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -59,13 +66,25 @@ def quiz():
         quiz_result['date_time'] = quiz_date
         quiz_result['mistakes'] = mistakes
 
-        ut.update_json_file_with_dict('quizzes_result.json', quiz_result)
+        if os.path.isfile(file_results):
+                pass
+        else:
+            ut.download_from_gcp_storage(bucket=bucket, blob_path=blob_path, file=file_results)
+            print('Downloaded from GCP Storage')
+
+        ut.update_json_file_with_dict(file_results, quiz_result)
+        ut.upload_to_gcp_storage(bucket=bucket, blob_path=blob_path, file=file_results)
 
         return redirect(url_for('home'))
 
 @app.route('/quizzes_history')
 @cross_origin()
 def quizzes_history():
+    if os.path.isfile(file_results):
+        pass
+    else:
+        ut.download_from_gcp_storage(bucket=bucket, blob_path=blob_path, file=file_results)
+        print('Downloaded from GCP Storage')
     try:
         table_from_flask = ut.make_html_table('quizzes_result.json')
         return render_template('quizzes_history.html', table_from_flask=table_from_flask)
